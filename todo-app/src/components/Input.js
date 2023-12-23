@@ -4,12 +4,17 @@ function Input() {
   const [todos, setTodos] = useState([]);
   const [Input, setInput] = useState("");
   const [toEdit, setToEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState(-1);
 
   const handleClick = (e) => {
-    if(toEdit){
-
-    }
-    else{
+    if (toEdit) {
+      const allTodos = [...todos];
+      allTodos[editIndex] = Input;
+      setTodos(allTodos);
+      setInput("");
+      setToEdit(false);
+      setEditIndex(-1);
+    } else {
       setTodos([...todos, Input]);
       setInput("");
     }
@@ -28,6 +33,7 @@ function Input() {
     setToEdit(true);
     console.log("value", value);
     setInput(value);
+    setEditIndex(index);
   };
   return (
     <form className="form">
@@ -45,7 +51,7 @@ function Input() {
         className="todo-input"
       />
       <button type="button" onClick={handleClick} className="btn btn-primary">
-       {toEdit ? "Edit Todo" : "Add Todo"}
+        {toEdit ? "Save" : "Add Todo"}
       </button>
       {todos.map((curValue, i) => (
         <>
@@ -54,8 +60,9 @@ function Input() {
             Remove
           </button>
           <button onClick={() => handleEdit(i)} type="button">
-          Edit
+            Edit
           </button>
+          <button type="button" onClick={() => handlecompleted(i)}>Completed</button>
         </>
       ))}
     </form>
