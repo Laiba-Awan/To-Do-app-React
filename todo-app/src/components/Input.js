@@ -3,12 +3,16 @@ import React, { useState } from "react";
 function Input() {
   const [todos, setTodos] = useState([]);
   const [Input, setInput] = useState("");
+  const [toEdit, setToEdit] = useState(false);
 
   const handleClick = (e) => {
-    e.preventDefault();
-    console.log("todo", Input);
-    setTodos([...todos, Input]);
-    setInput("");
+    if(toEdit){
+
+    }
+    else{
+      setTodos([...todos, Input]);
+      setInput("");
+    }
   };
 
   const handleDlt = (index) => {
@@ -19,9 +23,12 @@ function Input() {
     setTodos(allTodos);
   };
 
-  const handleEdit = (index) =>{
-    console.log("index", index);
-  }
+  const handleEdit = (index) => {
+    const value = todos[index];
+    setToEdit(true);
+    console.log("value", value);
+    setInput(value);
+  };
   return (
     <form className="form">
       <h2 className="heading">
@@ -37,14 +44,18 @@ function Input() {
         value={Input}
         className="todo-input"
       />
-      <button onClick={handleClick} className="btn btn-primary">
-        Add Todo
+      <button type="button" onClick={handleClick} className="btn btn-primary">
+       {toEdit ? "Edit Todo" : "Add Todo"}
       </button>
       {todos.map((curValue, i) => (
         <>
           <p key={i}>{curValue}</p>
-          <button onClick={() => handleDlt(i)}>Remove</button>
-          <button onClick={handleEdit(i)}>Edit</button>
+          <button onClick={() => handleDlt(i)} type="button">
+            Remove
+          </button>
+          <button onClick={() => handleEdit(i)} type="button">
+          Edit
+          </button>
         </>
       ))}
     </form>
