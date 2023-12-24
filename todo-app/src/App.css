@@ -8,7 +8,6 @@
   }
   .markdone{
     text-decoration: line-through;
-    display: inline-block;
   }
   .main-h {
     font-weight: bold;
