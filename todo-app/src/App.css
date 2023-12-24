@@ -22,11 +22,7 @@
     outline: none !important;
     box-shadow: 0 0 10px #719ece;
   }
-  .display {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-  }
+
   .cont1 {
     padding: 10px;
   }
