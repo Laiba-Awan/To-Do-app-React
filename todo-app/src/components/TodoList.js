@@ -14,7 +14,7 @@ const TodoList = ({
       {todos.length > 0 && (
         <Buttons
           onClick={handleDltAll}
-          className="btn btn-primary mybtn py-lg-3 py-2 px-lg-4 px-3"
+          className="btn btn-primary mybtn py-lg-2 py-2 px-lg-4 px-3"
         >
           <i class="fa-solid fa-trash me-lg-1 me-1" /> Delete All
         </Buttons>
