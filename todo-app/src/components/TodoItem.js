@@ -14,11 +14,11 @@ const TodoItem = ({
       <div className="col-6">
         <input
           type="checkbox"
-          className=""
+          className="checkbox me-2"
           checked={checked}
           onChange={() => handleCompleted(index)}
         />
-        <p className={curValue.completed ? "markdone" : "none"}>
+        <p className = {curValue.completed ? "markdone" : "checkbox"}>
           {curValue.todo}
         </p>
       </div>

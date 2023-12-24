@@ -8,6 +8,7 @@
   }
   .markdone{
     text-decoration: line-through;
+    display: inline-block;
   }
   .main-h {
     font-weight: bold;
@@ -22,7 +23,9 @@
     outline: none !important;
     box-shadow: 0 0 10px #719ece;
   }
-
+.checkbox{
+  display: inline-block;
+}
   .cont1 {
     padding: 10px;
   }
