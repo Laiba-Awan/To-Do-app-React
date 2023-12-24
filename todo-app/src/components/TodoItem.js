@@ -18,14 +18,15 @@ const TodoItem = ({
           checked={checked}
           onChange={() => handleCompleted(index)}
         />
-        <p className = {curValue.completed ? "markdone" : "checkbox"}>
+        <p className={curValue.completed ? "markdone" : "checkbox"}>
           {curValue.todo}
         </p>
       </div>
       <div className="col-3">
         <Buttons
           className="btn btn-primary mybtn mb-2"
-          onClick={() => handleDlt(index)}>
+          onClick={() => handleDlt(index)}
+        >
           <i class="fa-solid fa-xmark me-1"></i>
           Delete
         </Buttons>
