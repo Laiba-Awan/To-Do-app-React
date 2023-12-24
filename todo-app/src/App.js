@@ -103,7 +103,7 @@ function App() {
           onClick={handleClick}
           className="btn btn-primary mybtn py-lg-2 px-lg-4 mb-2"
         >
-          <i class="fa-solid fa-circle-plus me-lg-1 me-1"></i>
+          <i className="fa-solid fa-circle-plus me-lg-1 me-1"></i>
           {toEdit ? "Save" : "Add Todo"}
         </Buttons>
 
