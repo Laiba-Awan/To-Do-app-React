@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Buttons from "./components/Buttons";
 import Header from "./components/Header";
@@ -51,6 +52,17 @@ function App() {
   const handleDltAll = () => {
     setTodos([]);
   };
+
+  useEffect( ()=> {
+    console.log("todos",todos);
+    if(todos.length > 0)
+    localStorage.setItem("allTodos", JSON.stringify(todos));
+  }, [todos]);
+  
+  useEffect( ()=> {
+    console.log("useEffect",localStorage.getItem("allTodos"));
+    setTodos(JSON.parse(localStorage.getItem("allTodos")) || []);
+  },[]);
 
   return (
     <div className="container text-center cont1">
