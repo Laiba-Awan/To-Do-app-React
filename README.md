@@ -19,4 +19,4 @@ We used this hook to update the states of all the todos in the app.
 We used this hook for saving data to the local storage.
 We also used props to transfer data from one component to another.
 
-We also used Bootstrap to style the UI of the app.
+We also used Bootstrap and Fontawsome to style the UI of the app.
