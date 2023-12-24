@@ -9,3 +9,43 @@
   .markdone{
     text-decoration: line-through;
   }
+  .main-h {
+    font-weight: bold;
+    font-size: 50px;
+  }
+  .todo-input {
+    border-radius: 40px;
+    border-color: transparent;
+    text-indent: 20px;
+  }
+  .todo-input:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #719ece;
+  }
+  .display {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+  .cont1 {
+    padding: 10px;
+  }
+  .Iimg {
+    width: 100px;
+  }
+  .hr {
+    color: blueviolet;
+  }
+  .mybtn {
+    border-radius: 4px !important ;
+    background-color: rgb(111, 93, 184) !important;
+    border-color: transparent !important;
+  }
+  .mybtn:hover {
+    box-shadow: 0 0 10px rgb(120, 91, 235);
+  }
+  .display {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Buttons from "./components/Buttons";
-import Header from "./components/Header"
+import Header from "./components/Header";
 import Input from "./components/Input";
 import TodoList from "./components/TodoList";
 
@@ -53,28 +53,29 @@ function App() {
   };
 
   return (
-    <div className="container text-center">
-      <div className="app-body">
+    <div className="container text-center cont1">
+      <div className="col-md-12 col-12 mt-lg-4 mt-3">
         <h2 className="heading">
           <Header />
           Tuesday,21<sup>st</sup>
         </h2>
         <h6>September</h6>
-
-        <Input
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-          type="text"
-          placeholder="Add To-do"
-          value={input}
-        />
-
+        <div className="col-lg-8 col-sm-12 offset-lg-2">
+          <Input
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
+            type="text"
+            placeholder="Add To-do"
+            value={input}
+          />
+        </div>
         <Buttons
           type="button"
           onClick={handleClick}
-          className="btn btn-primary"
+          className="btn btn-primary mybtn py-lg-3 px-lg-4"
         >
+          <i class="fa-solid fa-circle-plus me-lg-1 me-1"></i>
           {toEdit ? "Save" : "Add Todo"}
         </Buttons>
 

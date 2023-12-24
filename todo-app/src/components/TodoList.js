@@ -12,9 +12,14 @@ const TodoList = ({
   return (
     <div>
       {todos.length > 0 && (
-        <Buttons onClick={handleDltAll}> Delete All</Buttons>
+        <Buttons
+          onClick={handleDltAll}
+          className="btn btn-primary mybtn py-lg-3 py-2 px-lg-4 px-3"
+        >
+          <i class="fa-solid fa-trash me-lg-1 me-1" /> Delete All
+        </Buttons>
       )}
-
+      <hr className="hr" />
       {todos.map((curValue, i) => (
         <div>
           <TodoItem

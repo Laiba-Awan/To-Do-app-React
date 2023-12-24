@@ -10,7 +10,8 @@ const TodoItem = ({
 }) => {
   const checked = curValue.completed;
   return (
-    <div className="">
+    <div className="row">
+      <div className="col-8">
       <input
         type="checkbox"
         className=""
@@ -20,11 +21,25 @@ const TodoItem = ({
       <p className={curValue.completed ? "markdone" : "none"}>
         {curValue.todo}
       </p>
-      <div className="row">
-      <Buttons onClick={() => handleDlt(index)}>Delete</Buttons>
-      <Buttons onClick={() => handleEdit(index)}>Edit</Buttons>
       </div>
-    </div>
+        <div className="col-2">
+          <Buttons
+            className="btn btn-primary mybtn"
+            onClick={() => handleDlt(index)}
+          >
+            Delete
+          </Buttons>
+        </div>
+        <div className="col-2">
+          <Buttons
+            className="btn btn-primary mybtn"
+            onClick={() => handleEdit(index)}
+          >
+            Edit
+          </Buttons>
+        </div>
+      </div>
+
   );
 };
 
