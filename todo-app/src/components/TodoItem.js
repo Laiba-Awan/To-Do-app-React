@@ -27,14 +27,14 @@ const TodoItem = ({
           className="btn btn-primary mybtn mb-2"
           onClick={() => handleDlt(index)}
         >
-          <i class="fa-solid fa-xmark me-1"></i>
+          <i class="fa-solid fa-xmark me-lg-1"></i>
           Delete
         </Buttons>
         <Buttons
-          className="btn btn-primary mybtn ms-3 mb-lg-3 mb-2"
+          className="btn btn-primary mybtn ms-3 mb-lg-3 mb-2 pe-3"
           onClick={() => handleEdit(index)}
         >
-          <i class="fa-solid fa-pen fa-sm me-2"></i>
+          <i class="fa-solid fa-pen fa-sm me-lg-2"></i>
           Edit
         </Buttons>
       </div>

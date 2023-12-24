@@ -44,4 +44,7 @@ body {
 .mybtn:hover {
   box-shadow: 0 0 10px rgb(120, 91, 235);
 }
+.validation{
+  color: red;
+}
 

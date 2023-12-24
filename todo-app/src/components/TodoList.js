@@ -19,16 +19,18 @@ const TodoList = ({
           <i class="fa-solid fa-trash me-lg-1 me-1" /> Delete All
         </Buttons>
       )}
+      
       <hr className="hr" />
+
       {todos.map((curValue, i) => (
         <div>
           <TodoItem
-            handleDlt={handleDlt}
-            handleEdit={handleEdit}
-            curValue={curValue}
-            handleCompleted={handleCompleted}
-            key={i}
-            index={i}
+            handleDlt = {handleDlt}
+            handleEdit = {handleEdit}
+            curValue = {curValue}
+            handleCompleted = {handleCompleted}
+            key = {i}
+            index = {i}
           />
         </div>
       ))}

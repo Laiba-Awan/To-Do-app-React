@@ -7,19 +7,29 @@ import Input from "./components/Input";
 import TodoList from "./components/TodoList";
 
 function App() {
+
+  //States//
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
+  const [validation, setValidation] = useState(false);
   const [toEdit, setToEdit] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
 
+  //HandleFunctions//
   const handleClick = () => {
     const allTodos = [...todos];
+    if (!input.replace()) {
+      setValidation(true);
+      return;
+    } else {
+      setValidation(false);
+    }
     if (toEdit) {
       allTodos[editIndex] = { todo: input, completed: false };
       setToEdit(false);
       setEditIndex(-1);
     } else {
-      allTodos.push ({ todo: input, completed: false });
+      allTodos.push({ todo: input, completed: false });
     }
     setTodos(allTodos);
     setInput("");
@@ -52,21 +62,22 @@ function App() {
     setTodos([]);
   };
 
-  useEffect( () => {
-    console.log("todos",todos);
-    if(todos.length > 0)
-    localStorage.setItem("completeTodos", JSON.stringify(todos));
+  // UseEffect to store data in localStorge//
+  useEffect(() => {
+    console.log("todos", todos);
+    if (todos.length > 0)
+      localStorage.setItem("completeTodos", JSON.stringify(todos));
   }, [todos]);
-  
-  useEffect( () => {
+
+  useEffect(() => {
     console.log("useEffect");
     setTodos(JSON.parse(localStorage.getItem("completeTodos")));
-  },[]);
+  }, []);
 
   return (
     <div className="container text-center cont1">
       <div className="col-md-12 col-12 mt-lg-4 mt-3">
-        <h2 className="heading">
+        <h2>
           <Header />
           Tuesday,21<sup>st</sup>
         </h2>
@@ -81,6 +92,12 @@ function App() {
             value={input}
           />
         </div>
+        {validation && (
+          <p className="validation">
+            Input Field is Empty! <br /> Write Something!
+          </p>
+        )}
+
         <Buttons
           type="button"
           onClick={handleClick}
