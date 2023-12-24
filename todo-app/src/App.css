@@ -30,7 +30,7 @@ body {
   padding: 10px;
 }
 .Iimg {
-  width: 100px;
+  width: 100px !important;
 }
 .hr {
   color: blueviolet;
