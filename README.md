@@ -7,7 +7,7 @@ components
   -Input.js
   -Buttons.js
   -TodoList.js
-  -TodoItems.js
+  -TodoItems.js [Child component to the TodoList.js]
 App.js [Main Component]
 App.css
 Index.js
