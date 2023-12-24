@@ -13,17 +13,16 @@ function App() {
   const [editIndex, setEditIndex] = useState(-1);
 
   const handleClick = () => {
+    const allTodos = [...todos];
     if (toEdit) {
-      const allTodos = [...todos];
       allTodos[editIndex] = { todo: input, completed: false };
-      setTodos(allTodos);
-      setInput("");
       setToEdit(false);
       setEditIndex(-1);
     } else {
-      setTodos([...todos, { todo: input, completed: false }]);
-      setInput("");
+      allTodos.push ({ todo: input, completed: false });
     }
+    setTodos(allTodos);
+    setInput("");
   };
 
   const handleDlt = (index) => {
@@ -53,15 +52,15 @@ function App() {
     setTodos([]);
   };
 
-  useEffect( ()=> {
+  useEffect( () => {
     console.log("todos",todos);
     if(todos.length > 0)
-    localStorage.setItem("allTodos", JSON.stringify(todos));
+    localStorage.setItem("completeTodos", JSON.stringify(todos));
   }, [todos]);
   
-  useEffect( ()=> {
-    console.log("useEffect",localStorage.getItem("allTodos"));
-    setTodos(JSON.parse(localStorage.getItem("allTodos")) || []);
+  useEffect( () => {
+    console.log("useEffect");
+    setTodos(JSON.parse(localStorage.getItem("completeTodos")));
   },[]);
 
   return (
