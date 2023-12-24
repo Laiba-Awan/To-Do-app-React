@@ -6,3 +6,6 @@
   body {
     background: linear-gradient(105deg, rgb(240, 208, 243), rgb(167, 224, 228));
   }
+  .markdone{
+    text-decoration: line-through;
+  }

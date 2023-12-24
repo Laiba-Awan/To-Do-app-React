@@ -9,13 +9,13 @@ function Input() {
   const handleClick = (e) => {
     if (toEdit) {
       const allTodos = [...todos];
-      allTodos[editIndex] = Input;
+      allTodos[editIndex] = { todo: Input, completed: false };
       setTodos(allTodos);
       setInput("");
       setToEdit(false);
       setEditIndex(-1);
     } else {
-      setTodos([...todos, Input]);
+      setTodos([...todos, { todo: Input, completed: false }]);
       setInput("");
     }
   };
@@ -26,15 +26,26 @@ function Input() {
     allTodos.splice(index, 1);
     console.log("allTodos", allTodos);
     setTodos(allTodos);
+    setInput("");
+    setToEdit(false);
   };
 
   const handleEdit = (index) => {
-    const value = todos[index];
+    const { todo } = todos[index];
     setToEdit(true);
-    console.log("value", value);
-    setInput(value);
+    console.log("value", todo);
+    setInput(todo);
     setEditIndex(index);
   };
+
+  const handleCompleted = (index) => {
+    const markTodos = [...todos];
+    const todoMark = markTodos[index];
+    todoMark.completed = true;
+    console.log("markTodos", markTodos);
+    setTodos(markTodos);
+  };
+
   return (
     <form className="form">
       <h2 className="heading">
@@ -55,14 +66,16 @@ function Input() {
       </button>
       {todos.map((curValue, i) => (
         <>
-          <p key={i}>{curValue}</p>
+          <p className={curValue.completed ? "markdone" : "none"} key={i}>{curValue.todo}</p>
           <button onClick={() => handleDlt(i)} type="button">
             Remove
           </button>
           <button onClick={() => handleEdit(i)} type="button">
             Edit
           </button>
-          <button type="button" onClick={() => handlecompleted(i)}>Completed</button>
+          <button type="button" onClick = {() => handleCompleted(i)}>
+            Completed
+          </button>
         </>
       ))}
     </form>
