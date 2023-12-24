@@ -5,8 +5,10 @@ function Input() {
   const [Input, setInput] = useState("");
   const [toEdit, setToEdit] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
+  const [dltAll, SetDltAll] = useState([...todos]);
 
-  const handleClick = (e) => {
+
+  const handleClick = () => {
     if (toEdit) {
       const allTodos = [...todos];
       allTodos[editIndex] = { todo: Input, completed: false };
@@ -21,7 +23,6 @@ function Input() {
   };
 
   const handleDlt = (index) => {
-    console.log("index", index);
     const allTodos = [...todos];
     allTodos.splice(index, 1);
     console.log("allTodos", allTodos);
@@ -33,7 +34,6 @@ function Input() {
   const handleEdit = (index) => {
     const { todo } = todos[index];
     setToEdit(true);
-    console.log("value", todo);
     setInput(todo);
     setEditIndex(index);
   };
@@ -45,6 +45,9 @@ function Input() {
     console.log("markTodos", markTodos);
     setTodos(markTodos);
   };
+  const handleDltAll = () => {
+    SetDltAll([]);
+};
 
   return (
     <form className="form">
@@ -64,16 +67,22 @@ function Input() {
       <button type="button" onClick={handleClick} className="btn btn-primary">
         {toEdit ? "Save" : "Add Todo"}
       </button>
+      <button type="button" onClick={handleDltAll} className="btn btn-warning">
+        Delete All
+      </button>
+
       {todos.map((curValue, i) => (
         <>
-          <p className={curValue.completed ? "markdone" : "none"} key={i}>{curValue.todo}</p>
+          <p className={curValue.completed ? "markdone" : "none"} key={i}>
+            {curValue.todo}
+          </p>
           <button onClick={() => handleDlt(i)} type="button">
             Remove
           </button>
           <button onClick={() => handleEdit(i)} type="button">
             Edit
           </button>
-          <button type="button" onClick = {() => handleCompleted(i)}>
+          <button type="button" onClick={() => handleCompleted(i)}>
             Completed
           </button>
         </>
