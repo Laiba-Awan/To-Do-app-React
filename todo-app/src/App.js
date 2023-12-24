@@ -60,7 +60,7 @@ function App() {
   
   useEffect( () => {
     console.log("useEffect");
-    setTodos(JSON.parse(localStorage.getItem("completeTodos"))|| []);
+    setTodos(JSON.parse(localStorage.getItem("completeTodos")));
   },[]);
 
   return (
