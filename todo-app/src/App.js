@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import "./App.css";
+import Buttons from "./components/Buttons";
+import Header from "./components/Header"
+import Input from "./components/Input";
 import TodoList from "./components/TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [Input, setInput] = useState("");
+  const [input, setInput] = useState("");
   const [toEdit, setToEdit] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
-
 
   const handleClick = () => {
     if (toEdit) {
       const allTodos = [...todos];
-      allTodos[editIndex] = { todo: Input, completed: false };
+      allTodos[editIndex] = { todo: input, completed: false };
       setTodos(allTodos);
       setInput("");
       setToEdit(false);
       setEditIndex(-1);
     } else {
-      setTodos([...todos, { todo: Input, completed: false }]);
+      setTodos([...todos, { todo: input, completed: false }]);
       setInput("");
     }
   };
@@ -48,54 +50,44 @@ function App() {
   };
   const handleDltAll = () => {
     setTodos([]);
-};
+  };
 
   return (
-    
     <div className="container text-center">
       <div className="app-body">
-      <TodoList />
-      <form className="form">
-      <h2 className="heading">
-        Tuesday,21<sup>st</sup>
-      </h2>
-      <h6>September</h6>
-      <input
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-        type="text"
-        placeholder="Add To-do"
-        value={Input}
-        className="todo-input"
-      />
-      <button type="button" onClick={handleClick} className="btn btn-primary">
-        {toEdit ? "Save" : "Add Todo"}
-      </button>
-      <button type="button" onClick={handleDltAll} className="btn btn-warning">
-        Delete All
-      </button>
+        <h2 className="heading">
+          <Header />
+          Tuesday,21<sup>st</sup>
+        </h2>
+        <h6>September</h6>
 
-      {todos.map((curValue, i) => (
-        <>
-          <p className={curValue.completed ? "markdone" : "none"} key={i}>
-            {curValue.todo}
-          </p>
-          <button onClick={() => handleDlt(i)} type="button">
-            Remove
-          </button>
-          <button onClick={() => handleEdit(i)} type="button">
-            Edit
-          </button>
-          <button type="button" onClick={() => handleCompleted(i)}>
-            Completed
-          </button>
-        </>
-      ))}
-      </form>
+        <Input
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+          type="text"
+          placeholder="Add To-do"
+          value={input}
+        />
+
+        <Buttons
+          type="button"
+          onClick={handleClick}
+          className="btn btn-primary"
+        >
+          {toEdit ? "Save" : "Add Todo"}
+        </Buttons>
+
+        <TodoList
+          todos={todos}
+          handleDltAll={handleDltAll}
+          handleDlt={handleDlt}
+          handleEdit={handleEdit}
+          handleCompleted={handleCompleted}
+        />
       </div>
     </div>
   );
-};
+}
 
 export default App;

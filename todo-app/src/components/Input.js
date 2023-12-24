@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Input() {
- 
+function Input({ type, onChange, placeholder, value }) {
   return (
- <div></div>
-    
+    <input
+      className=""
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      type={type}
+    />
   );
 }
+
 export default Input;

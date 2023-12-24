@@ -1,16 +1,34 @@
 import React from "react";
-import Header from "./Header";
-import Input from "./Input";
-import TodoItem from "./TodoItem"
+import Buttons from "./Buttons";
+import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+const TodoList = ({
+  todos,
+  handleDlt,
+  handleEdit,
+  handleCompleted,
+  handleDltAll,
+}) => {
   return (
     <div>
-       <Header />
-      <Input />
-      <TodoItem />
+      {todos.length > 0 && (
+        <Buttons onClick={handleDltAll}> Delete All</Buttons>
+      )}
+
+      {todos.map((curValue, i) => (
+        <div>
+          <TodoItem
+            handleDlt={handleDlt}
+            handleEdit={handleEdit}
+            curValue={curValue}
+            handleCompleted={handleCompleted}
+            key={i}
+            index={i}
+          />
+        </div>
+      ))}
     </div>
-  )
+  );
 };
 
 export default TodoList;
